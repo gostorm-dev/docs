@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation — go-storm</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 280px;
+            background: #111;
+            border-right: 1px solid #222;
+            padding: 24px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .sidebar-logo {
+            padding: 0 24px 24px;
+            font-size: 20px;
+            font-weight: 800;
+            border-bottom: 1px solid #222;
+        }
+        .sidebar-logo span { color: #f97316; }
+        .sidebar-logo a { color: #fff; text-decoration: none; }
+        .sidebar-section {
+            padding: 24px 24px 8px;
+        }
+        .sidebar-section h4 {
+            color: #555;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .sidebar-section a {
+            display: block;
+            color: #888;
+            text-decoration: none;
+            padding: 8px 0;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .sidebar-section a:hover { color: #f97316; }
+        .sidebar-section a.active { color: #f97316; font-weight: 600; }
+
+        /* MAIN */
+        .main {
+            margin-left: 280px;
+            flex: 1;
+            padding: 48px 64px;
+            max-width: 900px;
+        }
+
+        h1 {
+            font-size: 40px;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+        h1 span { color: #f97316; }
+
+        .subtitle {
+            color: #888;
+            font-size: 18px;
+            margin-bottom: 48px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin: 48px 0 16px;
+            padding-top: 24px;
+            border-top: 1px solid #222;
+        }
+        h2:first-of-type { border-top: none; }
+
+        h3 {
+            font-size: 20px;
+            margin: 32px 0 12px;
+        }
+
+        p { margin-bottom: 16px; }
+
+        a { color: #f97316; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        pre {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        code {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+        p code {
+            background: #1a1a1a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #f97316;
+        }
+
+        ul, ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+        li { margin-bottom: 8px; }
+
+        .callout {
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 24px 0;
+        }
+        .callout strong { color: #f97316; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #222;
+        }
+        th { color: #888; font-size: 13px; text-transform: uppercase; }
+
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main { margin-left: 0; padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <div class="sidebar-logo"><a href="/">go<span>storm</span></a></div>
+    
+    <div class="sidebar-section">
+        <h4>Getting Started</h4>
+        <a href="index.html" class="active">Introduction</a>
+        <a href="installation.html">Installation</a>
+        <a href="quickstart.html">Quick Start</a>
+    </div>
+    
+    <div class="sidebar-section">
+        <h4>User Guide</h4>
+        <a href="basic-usage.html">Basic Usage</a>
+        <a href="configuration.html">Configuration</a>
+        <a href="load-patterns.html">Load Patterns</a>
+        <a href="distributed.html">Distributed Testing</a>
+    </div>
+    
+    <div class="sidebar-section">
+        <h4>Reference</h4>
+        <a href="cli-reference.html">CLI Reference</a>
+        <a href="flags.html">All Flags</a>
+        <a href="examples.html">Examples</a>
+    </div>
+    
+    <div class="sidebar-section">
+        <h4>Advanced</h4>
+        <a href="saturation.html">Saturation Detection</a>
+        <a href="prometheus.html">Prometheus Metrics</a>
+        <a href="connection-pooling.html">Connection Pooling</a>
+    </div>
+    
+    <div class="sidebar-section">
+        <h4>More</h4>
+        <a href="https://github.com/gostorm-dev/go-storm">GitHub</a>
+        <a href="https://discord.gg/gostorm">Discord</a>
+        <a href="https://twitter.com/gostormdev">Twitter</a>
+    </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+    <h1>go-storm <span>Documentation</span></h1>
+    <p class="subtitle">The most accurate load testing engine. Detects when YOUR generator is the bottleneck.</p>
+
+    <h2>What is go-storm?</h2>
+    <p>go-storm is a high-performance HTTP load testing engine written in Go. Unlike other tools that only show you results, go-storm tells you whether those results are trustworthy by monitoring the load generator itself.</p>
+
+    <div class="callout">
+        <strong>Key Differentiator:</strong> go-storm is the only load testing tool that detects generator saturation — it monitors CPU, memory, GC pressure, goroutines, file descriptors, and worker utilization in real-time.
+    </div>
+
+    <h2>Quick Install</h2>
+    <pre><code>go install github.com/gostorm-dev/go-storm@latest</code></pre>
+
+    <h2>Quick Start</h2>
+    <pre><code># Basic load test
+storm run -u https://example.com -n 1000 -c 50
+
+# With capacity estimation
+storm run -u https://example.com -n 5000 --estimate
+
+# With saturation monitoring (default: enabled)
+storm run -u https://example.com -n 10000 -c 100</code></pre>
+
+    <h2>Features</h2>
+    <ul>
+        <li><strong>Generator Saturation Detection</strong> — 7 real-time factors</li>
+        <li><strong>Health Reports</strong> — Actionable recommendations</li>
+        <li><strong>Capacity Estimation</strong> — Know your limits before testing</li>
+        <li><strong>Connection Pooling</strong> — 25x more connections per host</li>
+        <li><strong>HTTP/2 Support</strong> — Multiplexed connections</li>
+        <li><strong>Streaming Aggregation</strong> — O(1) memory, no sorting</li>
+        <li><strong>Distributed Testing</strong> — Scale across machines</li>
+        <li><strong>Prometheus Metrics</strong> — Real-time monitoring</li>
+    </ul>
+
+    <h2>Why go-storm?</h2>
+    <p>Every other load testing tool shows you results. go-storm shows you whether those results are <strong>trustworthy</strong>.</p>
+    <p>When your load generator is saturated, your results are meaningless. go-storm detects this and tells you exactly what's happening.</p>
+
+    <h2>Next Steps</h2>
+    <ul>
+        <li><a href="installation.html">Installation Guide</a></li>
+        <li><a href="quickstart.html">Quick Start Tutorial</a></li>
+        <li><a href="cli-reference.html">CLI Reference</a></li>
+        <li><a href="saturation.html">Understanding Saturation Detection</a></li>
+    </ul>
+</main>
+
+</div>
+</body>
+</html>

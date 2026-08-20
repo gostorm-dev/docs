@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation — go-storm</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.7; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; background: #111; border-right: 1px solid #222; padding: 24px 0; position: fixed; height: 100vh; overflow-y: auto; }
+        .sidebar-logo { padding: 0 24px 24px; font-size: 20px; font-weight: 800; border-bottom: 1px solid #222; }
+        .sidebar-logo span { color: #f97316; }
+        .sidebar-logo a { color: #fff; text-decoration: none; }
+        .sidebar-section { padding: 24px 24px 8px; }
+        .sidebar-section h4 { color: #555; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .sidebar-section a { display: block; color: #888; text-decoration: none; padding: 8px 0; font-size: 14px; transition: color 0.2s; }
+        .sidebar-section a:hover { color: #f97316; }
+        .main { margin-left: 280px; flex: 1; padding: 48px 64px; max-width: 900px; }
+        h1 { font-size: 40px; margin-bottom: 16px; }
+        h1 span { color: #f97316; }
+        .subtitle { color: #888; font-size: 18px; margin-bottom: 48px; }
+        h2 { font-size: 28px; margin: 48px 0 16px; padding-top: 24px; border-top: 1px solid #222; }
+        p { margin-bottom: 16px; }
+        pre { background: #111; border: 1px solid #222; border-radius: 8px; padding: 20px; overflow-x: auto; margin: 16px 0; font-size: 14px; }
+        code { font-family: 'SF Mono', 'Fira Code', monospace; }
+        .callout { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.3); border-radius: 8px; padding: 16px 20px; margin: 24px 0; }
+        .callout strong { color: #f97316; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+        th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #222; }
+        th { color: #888; font-size: 13px; }
+        ul { margin: 16px 0; padding-left: 24px; }
+        li { margin-bottom: 8px; }
+        a { color: #f97316; text-decoration: none; }
+        @media (max-width: 768px) { .sidebar { display: none; } .main { margin-left: 0; padding: 24px; } }
+    </style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+    <div class="sidebar-logo"><a href="/">go<span>storm</span></a></div>
+    <div class="sidebar-section">
+        <h4>Getting Started</h4>
+        <a href="index.html">Introduction</a>
+        <a href="installation.html">Installation</a>
+        <a href="quickstart.html">Quick Start</a>
+    </div>
+    <div class="sidebar-section">
+        <h4>User Guide</h4>
+        <a href="basic-usage.html">Basic Usage</a>
+        <a href="configuration.html">Configuration</a>
+        <a href="load-patterns.html">Load Patterns</a>
+        <a href="distributed.html">Distributed Testing</a>
+    </div>
+    <div class="sidebar-section">
+        <h4>Reference</h4>
+        <a href="cli-reference.html">CLI Reference</a>
+        <a href="flags.html">All Flags</a>
+        <a href="examples.html">Examples</a>
+    </div>
+    <div class="sidebar-section">
+        <h4>Advanced</h4>
+        <a href="saturation.html">Saturation Detection</a>
+        <a href="prometheus.html">Prometheus Metrics</a>
+        <a href="connection-pooling.html">Connection Pooling</a>
+    </div>
+    <div class="sidebar-section">
+        <h4>More</h4>
+        <a href="https://github.com/gostorm-dev/go-storm">GitHub</a>
+        <a href="https://discord.gg/gostorm">Discord</a>
+    </div>
+</aside>
+
+<main class="main">
+    <h1>Installation</h1>
+    <p class="subtitle">Install go-storm in under 60 seconds.</p>
+
+    <h2>Install from Source</h2>
+    <pre><code>go install github.com/gostorm-dev/go-storm@latest</code></pre>
+    <p>Requires Go 1.21 or later.</p>
+
+    <h2>Download Binary</h2>
+    <p>Download the latest binary from <a href="https://github.com/gostorm-dev/go-storm/releases">GitHub Releases</a>.</p>
+    
+    <table>
+        <tr><th>Platform</th><th>Architecture</th><th>Download</th></tr>
+        <tr><td>Linux</td><td>amd64</td><td><a href="#">go-storm-linux-amd64</a></td></tr>
+        <tr><td>Linux</td><td>arm64</td><td><a href="#">go-storm-linux-arm64</a></td></tr>
+        <tr><td>macOS</td><td>amd64</td><td><a href="#">go-storm-darwin-amd64</a></td></tr>
+        <tr><td>macOS</td><td>arm64</td><td><a href="#">go-storm-darwin-arm64</a></td></tr>
+        <tr><td>Windows</td><td>amd64</td><td><a href="#">go-storm-windows-amd64.exe</a></td></tr>
+    </table>
+
+    <h2>Build from Source</h2>
+    <pre><code>git clone https://github.com/gostorm-dev/go-storm.git
+cd go-storm
+go build -o storm .
+sudo mv storm /usr/local/bin/</code></pre>
+
+    <h2>Verify Installation</h2>
+    <pre><code>storm --version</code></pre>
+
+    <div class="callout">
+        <strong>Tip:</strong> On Linux/macOS, you may need to add <code>/usr/local/bin</code> to your PATH.
+    </div>
+
+    <h2>Next Steps</h2>
+    <ul>
+        <li><a href="quickstart.html">Quick Start</a> — Run your first load test</li>
+        <li><a href="basic-usage.html">Basic Usage</a> — Learn the basics</li>
+        <li><a href="cli-reference.html">CLI Reference</a> — All commands and flags</li>
+    </ul>
+</main>
+</div>
+</body>
+</html>

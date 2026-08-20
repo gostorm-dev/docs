@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Start — go-storm</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.7; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; background: #111; border-right: 1px solid #222; padding: 24px 0; position: fixed; height: 100vh; overflow-y: auto; }
+        .sidebar-logo { padding: 0 24px 24px; font-size: 20px; font-weight: 800; border-bottom: 1px solid #222; }
+        .sidebar-logo span { color: #f97316; }
+        .sidebar-logo a { color: #fff; text-decoration: none; }
+        .sidebar-section { padding: 24px 24px 8px; }
+        .sidebar-section h4 { color: #555; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .sidebar-section a { display: block; color: #888; text-decoration: none; padding: 8px 0; font-size: 14px; transition: color 0.2s; }
+        .sidebar-section a:hover { color: #f97316; }
+        .main { margin-left: 280px; flex: 1; padding: 48px 64px; max-width: 900px; }
+        h1 { font-size: 40px; margin-bottom: 16px; }
+        h1 span { color: #f97316; }
+        .subtitle { color: #888; font-size: 18px; margin-bottom: 48px; }
+        h2 { font-size: 28px; margin: 48px 0 16px; padding-top: 24px; border-top: 1px solid #222; }
+        p { margin-bottom: 16px; }
+        pre { background: #111; border: 1px solid #222; border-radius: 8px; padding: 20px; overflow-x: auto; margin: 16px 0; font-size: 14px; }
+        code { font-family: 'SF Mono', 'Fira Code', monospace; }
+        .callout { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.3); border-radius: 8px; padding: 16px 20px; margin: 24px 0; }
+        .callout strong { color: #f97316; }
+        .step { display: flex; gap: 20px; margin: 24px 0; }
+        .step-num { width: 32px; height: 32px; background: #f97316; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; }
+        .step-content { flex: 1; }
+        .step-content h3 { margin-bottom: 8px; }
+        ul { margin: 16px 0; padding-left: 24px; }
+        li { margin-bottom: 8px; }
+        a { color: #f97316; text-decoration: none; }
+        @media (max-width: 768px) { .sidebar { display: none; } .main { margin-left: 0; padding: 24px; } }
+    </style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+    <div class="sidebar-logo"><a href="/">go<span>storm</span></a></div>
+    <div class="sidebar-section">
+        <h4>Getting Started</h4>
+        <a href="index.html">Introduction</a>
+        <a href="installation.html">Installation</a>
+        <a href="quickstart.html">Quick Start</a>
+    </div>
+    <div class="sidebar-section">
+        <h4>User Guide</h4>
+        <a href="basic-usage.html">Basic Usage</a>
+        <a href="configuration.html">Configuration</a>
+        <a href="load-patterns.html">Load Patterns</a>
+        <a href="distributed.html">Distributed Testing</a>
+    </div>
+    <div class="sidebar-section">
+        <h4>Reference</h4>
+        <a href="cli-reference.html">CLI Reference</a>
+        <a href="flags.html">All Flags</a>
+        <a href="examples.html">Examples</a>
+    </div>
+    <div class="sidebar-section">
+        <h4>Advanced</h4>
+        <a href="saturation.html">Saturation Detection</a>
+        <a href="prometheus.html">Prometheus Metrics</a>
+        <a href="connection-pooling.html">Connection Pooling</a>
+    </div>
+    <div class="sidebar-section">
+        <h4>More</h4>
+        <a href="https://github.com/gostorm-dev/go-storm">GitHub</a>
+        <a href="https://discord.gg/gostorm">Discord</a>
+    </div>
+</aside>
+
+<main class="main">
+    <h1>Quick <span>Start</span></h1>
+    <p class="subtitle">Run your first load test in under 60 seconds.</p>
+
+    <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+            <h3>Install go-storm</h3>
+            <pre><code>go install github.com/gostorm-dev/go-storm@latest</code></pre>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+            <h3>Run a Basic Load Test</h3>
+            <pre><code>storm run -u https://example.com -n 100 -c 10</code></pre>
+            <p>This sends 100 requests with 10 concurrent workers.</p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+            <h3>Check the Results</h3>
+            <p>go-storm will show you:</p>
+            <ul>
+                <li>Total requests and success rate</li>
+                <li>Latency percentiles (p50, p95, p99)</li>
+                <li>Requests per second</li>
+                <li><strong>Generator health report</strong> — is your generator saturated?</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="callout">
+        <strong>Key Feature:</strong> The health report tells you if your generator is the bottleneck. If worker utilization is above 95%, your generator can't keep up — not your target.
+    </div>
+
+    <h2>Common Commands</h2>
+    
+    <pre><code># Basic load test
+storm run -u https://example.com -n 1000 -c 50
+
+# With capacity estimation
+storm run -u https://example.com -n 5000 --estimate
+
+# With rate limiting (1000 RPS)
+storm run -u https://example.com -n 5000 -c 100 -r 1000
+
+# JSON output
+storm run -u https://example.com -n 1000 --format json --output results.json
+
+# With Prometheus metrics
+storm run -u https://example.com -n 5000 --metrics-port 9091</code></pre>
+
+    <h2>Understanding the Output</h2>
+    <pre><code>============================================================
+LOAD TEST RESULTS
+============================================================
+URL: https://example.com
+Total Requests: 1000
+Concurrency: 50
+------------------------------------------------------------
+Successful: 1000
+Failed: 0
+Success Rate: 100.00%
+------------------------------------------------------------
+Min Response: 12.5ms
+Max Response: 245.3ms
+Avg Response: 45.2ms
+p50 Response: 38ms
+p95 Response: 120ms
+p99 Response: 210ms
+Requests/sec: 4,523
+============================================================
+
+═══════════════════════════════════════════════
+        GENERATOR HEALTH REPORT
+═══════════════════════════════════════════════
+CPU Usage:        23.4% ✅
+Memory:          45.2 MB
+Worker Util:     78.2% ✅
+═══════════════════════════════════════════════
+  ✅ GENERATOR HEALTHY — Results are trustworthy.
+═══════════════════════════════════════════════</code></pre>
+
+    <h2>Next Steps</h2>
+    <ul>
+        <li><a href="basic-usage.html">Basic Usage</a> — Learn all the options</li>
+        <li><a href="saturation.html">Saturation Detection</a> — Understand the health report</li>
+        <li><a href="distributed.html">Distributed Testing</a> — Scale across machines</li>
+        <li><a href="examples.html">Examples</a> — Real-world test scenarios</li>
+    </ul>
+</main>
+</div>
+</body>
+</html>
