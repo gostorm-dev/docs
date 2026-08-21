@@ -10,11 +10,12 @@ hero:
       text: Get Started
       link: /guide/installation
     - theme: alt
-      text: Benchmarks
-      link: /benchmarks/overview
-    - theme: alt
       text: GitHub
       link: https://github.com/gostorm-dev/go-storm
+
+  image:
+    src: /logo.png
+    alt: go-storm
 
 features:
   - title: Generator Health Monitoring

@@ -7,12 +7,13 @@ export default defineConfig({
   lang: 'en',
 
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }]
+    ['link', { rel: 'icon', type: 'image/png', href: '/docs/logo.png' }]
   ],
 
   themeConfig: {
-    siteTitle: 'go-storm',
+    siteTitle: false,
 
+    logo: '/logo.png',
     nav: [
       { text: 'Guide', link: '/guide/installation' },
       { text: 'Reference', link: '/reference/default-behaviors' },
