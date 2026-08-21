@@ -1,0 +1,21 @@
+{
+  "name": "go-storm-docs",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "go-storm documentation",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gostorm-dev/docs.git"
+  },
+  "keywords": ["load-testing", "go", "http", "benchmarks"],
+  "author": "go-storm",
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}

@@ -1,0 +1,1 @@
+import{_ as a,o,c as t,a2 as r}from"./chunks/framework.mRCPFc5l.js";const f=JSON.parse('{"title":"FAQ","description":"","frontmatter":{},"headers":[],"relativePath":"help/faq.md","filePath":"help/faq.md"}'),s={name:"help/faq.md"};function n(i,e,l,c,h,u){return o(),t("div",null,[...e[0]||(e[0]=[r("",4)])])}const m=a(s,[["render",n]]);export{f as __pageData,m as default};
