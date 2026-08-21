@@ -3,6 +3,8 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'go-storm',
   description: 'The Load Tester That Tells Truth',
+  base: '/docs/',
+  lang: 'en',
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }]
