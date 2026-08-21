@@ -34,6 +34,7 @@ Usage:
 | `-u, --url` | string | *(required)* | Target URL to test |
 | `-m, --method` | string | `GET` | HTTP method: GET, POST, PUT, DELETE |
 | `-b, --body` | string | — | Request body (for POST/PUT) |
+| `-H, --header` | stringArray | — | Custom header, repeatable: `-H "Key: Value"` |
 | `-t, --timeout` | int | `10` | Request timeout in seconds |
 | `--insecure` | bool | `false` | Skip TLS certificate verification |
 
@@ -59,6 +60,25 @@ faster than the requested rate.
 | `--output` | string | — | Write JSON report to a file |
 
 See [Output Formats](/guide/output-formats) for samples of every format.
+
+### CI Gate
+
+Opt-in failure conditions. When a limit is exceeded, storm exits with code
+`2` after printing the full report. Without these flags, a completed run
+always exits `0`.
+
+| Flag | Type | Default | Description |
+|---|---|---|---|
+| `--fail-above-errors` | int | `-1` *(off)* | Exit 2 if failed requests exceed N |
+| `--fail-above-p95` | float | `-1` *(off)* | Exit 2 if p95 latency exceeds MS milliseconds |
+
+```bash
+# Pipeline goes red on >20 failures or p95 slower than 500ms
+storm run -u https://staging.api.com/users -n 2000 -c 100 \
+  --fail-above-errors 20 --fail-above-p95 500
+```
+
+See [Exit Codes](/reference/exit-codes) for the full scheme.
 
 ### Generator Saturation
 
@@ -126,10 +146,13 @@ Usage:
 | `-n, --requests` | int | `100` | Total requests across all agents |
 | `-m, --method` | string | `GET` | HTTP method |
 | `-b, --body` | string | — | Request body |
+| `-H, --header` | stringArray | — | Custom header, repeatable: `-H "Key: Value"` |
 | `-t, --timeout` | int | `10` | Request timeout in seconds |
 | `--agents` | int | `0` | Wait for this many agents before starting (`0` = don't wait) |
 | `--format` | string | `text` | Output format: `text` or `json` |
 | `--output` | string | — | Write JSON report to a file |
+| `--fail-above-errors` | int | `-1` *(off)* | Exit 2 if failed requests exceed N |
+| `--fail-above-p95` | float | `-1` *(off)* | Exit 2 if p95 latency exceeds MS ms |
 
 Examples:
 

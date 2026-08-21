@@ -71,6 +71,14 @@ Saturation monitoring is on by default. If the generator degrades during a
 test you will see WARN/CRITICAL lines — results are never presented as
 trustworthy when they are not.
 
+### Request Defaults
+
+- `Content-Type: application/json` is sent automatically for POST/PUT when
+  you do not supply one. A user-supplied `-H "Content-Type: ..."` always wins.
+- go-storm itself adds no other headers and no cookies. (Go's HTTP stack may
+  add its standard `User-Agent` and `Accept-Encoding` — same as any Go
+  program.) What you pass with `-H` arrives verbatim at the target.
+
 ### Machine-Readable Means Machine-Readable
 
 `json`, `csv` and `quiet` formats suppress the progress bar, banner and

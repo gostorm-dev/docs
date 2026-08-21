@@ -8,26 +8,23 @@ Reference for the JSON report produced by `--format json` and `--output`.
 {
   "url": "http://localhost:8080/api/health",
   "method": "GET",
-  "concurrency": 200,
-  "rate": 1000,
-  "total_requests": 1839,
-  "successful": 694,
-  "failed": 1145,
-  "success_rate": 37.7379010331702,
-  "min_response_time_ms": 0,
-  "max_response_time_ms": 4849,
-  "avg_response_time_ms": 528,
-  "p50_ms": 50,
-  "p95_ms": 5000,
-  "p99_ms": 5000,
-  "requests_per_sec": 30.64757624664839,
-  "total_duration_ms": 60004,
+  "concurrency": 10,
+  "rate": 0,
+  "total_requests": 200,
+  "successful": 200,
+  "failed": 0,
+  "success_rate": 100,
+  "min_response_time_ms": 0.333806,
+  "max_response_time_ms": 54.357187,
+  "avg_response_time_ms": 3.815292,
+  "p50_ms": 1.928571,
+  "p95_ms": 10,
+  "p99_ms": 80,
+  "requests_per_sec": 2301.0913086607716,
+  "total_duration_ms": 86,
   "status_codes": {
-    "200": 694
-  },
-  "errors": [
-    "Job 19: Get \"http://localhost:8080/api/health\": context deadline exceeded"
-  ]
+    "200": 200
+  }
 }
 ```
 
@@ -67,7 +64,10 @@ Reference for the JSON report produced by `--format json` and `--output`.
 | `p95_ms` | number | 95% of requests were faster |
 | `p99_ms` | number | 99% of requests were faster |
 
-All latency values are integers rounded to milliseconds.
+All latency values are fractional milliseconds. Sub-millisecond precision is
+preserved — a fast target reports `p50_ms: 1.93`, never a misleading `0`.
+Percentiles are estimated from a logarithmic histogram with linear
+interpolation, so values may not exactly match any single request.
 
 ### Throughput
 

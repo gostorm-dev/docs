@@ -64,14 +64,23 @@ RPS report, you always know exactly what was delivered.
 
 ## Does a non-zero exit code mean requests failed?
 
-No — see [Exit Codes](/reference/exit-codes). Exit codes tell you whether
-*storm* ran; the JSON report tells you how the *target* behaved. CI should
-assert on `success_rate`, `failed` and `p95_ms`.
+Not by default — see [Exit Codes](/reference/exit-codes). Without gate flags,
+exit codes tell you whether *storm* ran; the JSON report tells you how the
+*target* behaved. With `--fail-above-errors` / `--fail-above-p95`, a threshold
+violation produces exit code `2`.
 
 ## Are custom headers supported?
 
-Not yet in v0.4 — see [HTTP Methods](/guide/http-methods#what-happens-on-auth-protected-endpoints).
-Header support is on the roadmap.
+Yes. Use the repeatable `-H` flag:
+
+```bash
+storm run -u https://api.example.com/me \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "X-Trace: loadtest"
+```
+
+See [HTTP Methods](/guide/http-methods#auth-protected-endpoints) for details,
+including `Content-Type` override and distributed-mode support.
 
 ## Where do the numbers in these docs come from?
 

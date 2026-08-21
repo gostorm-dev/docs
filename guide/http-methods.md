@@ -77,15 +77,31 @@ After the run, view the saved report any time:
 storm report orders-report.json
 ```
 
-## What Happens on Auth-Protected Endpoints
+## Auth-Protected Endpoints
 
-Custom request headers are **not yet supported** in v0.4 — endpoints that
-require an `Authorization` header will return `401`, which counts as a
-successful (fast) HTTP response in the results, not a failure.
+Pass custom headers with the repeatable `-H` flag (curl-style):
 
-Header support is on the roadmap. Until then, test auth-protected flows
-behind a proxy that injects credentials, or load-test endpoints that are
-protected at the infrastructure level (IP allowlist) rather than per-request.
+```bash
+storm run -u https://api.example.com/me \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "X-Trace: loadtest" \
+  -n 5000 -c 50
+```
+
+Each `-H` takes a `"Key: Value"` pair. Invalid specs fail fast before any
+request is sent:
+
+```text
+Error: invalid header "Authorization Bearer x": expected "Key: Value" format
+```
+
+Notes:
+
+- `Content-Type` defaults to `application/json` for POST/PUT; supply your own
+  via `-H "Content-Type: text/plain"` to override.
+- `Host` is applied at the wire level, so virtual-host testing works.
+- Headers are supported in distributed mode too — they travel with each job
+  through the Redis queue automatically.
 
 ## Next Steps
 
